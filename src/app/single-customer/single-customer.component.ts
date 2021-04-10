@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./single-customer.component.scss']
 })
 export class SingleCustomerComponent implements OnInit {
-
+  panelOpenState = false;
+  
   constructor() { }
 
   ngOnInit(): void {
