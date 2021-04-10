@@ -1,1 +1,20 @@
-<p>purchases works!</p>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Date</mat-label>
+      <input matInput placeholder="04/09/21" value="Date">
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" class="example-right-align">
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Description of purchase</mat-label>
+        <textarea matInput placeholder="Ex. CellPhone Accesory"></textarea>
+      </mat-form-field>
+  </form>
+
+  <button mat-raised-button>Submit</button>

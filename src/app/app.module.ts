@@ -9,7 +9,9 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
+import {MatStepperModule} from '@angular/material/stepper';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
@@ -23,6 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { LoginComponent } from './login/login.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +53,12 @@ import { LoginComponent } from './login/login.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatStepperModule,
+    FormBuilder,
+    FormGroup,
+    Validators,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
