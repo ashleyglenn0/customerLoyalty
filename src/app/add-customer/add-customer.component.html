@@ -1,47 +1,27 @@
+<h2>Add a new customer: </h2>
+
 <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Company (disabled)</mat-label>
-    <input matInput disabled value="Save the Stores">
-  </mat-form-field>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>First name</mat-label>
-      <input matInput>
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>Long Last Name That Will Be Truncated</mat-label>
-      <input matInput>
-    </mat-form-field></td>
-  </tr></table>
-  <section class="example-section">
-    <mat-checkbox class="example-margin">Loyalty Points?</mat-checkbox>
-    <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
-  </section>
+    <mat-form-field class="example-full-width">
+      <mat-label>Company (disabled)</mat-label>
+      <input matInput disabled value="Save the Stores">
+    </mat-form-field>
   
-  <!-- <section class="example-section">
-    <span class="example-list-section">
-      <mat-checkbox class="example-margin"
-                    [checked]="allComplete"
-                    [color]="task.color"
-                    [indeterminate]="someComplete()"
-                    (change)="setAll($event.checked)">
-        {{task.name}}
-      </mat-checkbox>
-    </span>
-    <span class="example-list-section">
-      <ul>
-        <li *ngFor="let subtask of task.subtasks">
-          <mat-checkbox [(ngModel)]="subtask.completed"
-                        [color]="subtask.color"
-                        (ngModelChange)="updateAllComplete()">
-            {{subtask.name}}
-          </mat-checkbox>
-        </li>
-      </ul>
-    </span>
-  </section> -->
-
-</form>
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>First name</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Long Last Name That Will Be Truncated</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+    </tr></table>
   
-<button mat-raised-button color="primary">Next Page</button>
+    <p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Loyalty Points:</mat-label>
+        <textarea matInput placeholder="Ex. 100 Main St">0</textarea>
+      </mat-form-field>
+    </p>
+  <button mat-raised-button color="accent">Next Page</button>
+  </form>
