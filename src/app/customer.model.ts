@@ -1,7 +1,7 @@
 import { Purchases } from '../app/purchases/purchases.model';
 
 export class Customer{
-    public customerId: number;
+    public customerId: any;
     public firstName: string;
     public lastName: string;
     public loyaltyPoints: number;

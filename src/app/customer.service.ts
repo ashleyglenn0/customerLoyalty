@@ -4,6 +4,7 @@ import { Purchases } from '../app/purchases/purchases.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,12 +16,6 @@ export class CustomerService{
     
   }
 
-  createCustomer(firstName: string, lastName: string, loyaltyPoints: number, purchases: any = []): number{
-    const customer: Customer = new Customer(firstName, lastName, loyaltyPoints, purchases);
-    this.customers.push(customer);
-    return customer.customerId;
-  }
-
   getCustomerById(id: number): Customer | undefined {
     for(let i = 0; i < this.customers.length; i++){
       if(this.customers[i].customerId === id){
@@ -28,6 +23,13 @@ export class CustomerService{
       }
     }
     return undefined;
+    
+  }
+
+  createCustomer(firstName: string, lastName: string, loyaltyPoints: number, purchases: any = []): number{
+    const customer: Customer = new Customer(firstName, lastName, loyaltyPoints, purchases);
+    this.customers.push(customer);
+    return customer.customerId;
   }
 
   createPurchases(date: string, description: string, amount: number, customer: Customer): any{

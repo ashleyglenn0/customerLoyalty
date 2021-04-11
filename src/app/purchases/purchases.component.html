@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<form (ngSubmit)="onSubmit()" #f="ngForm">
   <div class="form-group">
     <label for="formGroupExampleInput">Date of Purchase</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Date of Purchase" ngModel name = "date" required>
@@ -13,4 +13,4 @@
   </div>
 </form>
   <span>Total Loyalty Points: {{existingLoyaltyPoints}} </span>
-  <button mat-raised-button type="button" (click)="onSubmit(f)">Submit</button>
+  <button mat-raised-button type="submit" (click)="addPurchase(f)">Save Purchase</button><button mat-raised-button type="button" (click)="onSubmit()">Save Customer</button>

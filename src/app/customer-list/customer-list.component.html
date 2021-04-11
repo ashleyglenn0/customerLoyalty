@@ -1,17 +1,17 @@
 <mat-list>
     <h3 mat-subheader>Customers</h3>
-    <mat-list-item *ngFor="let customer of customers; last as last">
+    <mat-list-item *ngFor="let customer of customers | async; last as last">
        <mat-icon mat-list-icon>folder</mat-icon>
        <h4 mat-line></h4>
-       <p mat-line class="demo-2">  </p>
+       <p mat-line class="demo-2"> {{customer.firstName }} {{ customer.lastName }} </p>
        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
        <button mat-raised-button color="warn">Refund Customer</button><button mat-raised-button color="accent">View Customer</button>
     </mat-list-item>
     <mat-divider></mat-divider>
     <h3 mat-subheader>Notes</h3>
-    <mat-list-item *ngFor="let note of notes">
-       <mat-icon mat-list-icon>note</mat-icon>
+    <mat-list-item *ngFor="let purchases of purchases">
+       <mat-icon mat-list-icon>Loyalty Points</mat-icon>
        <h4 mat-line></h4>
-       <p mat-line class="demo-2">  </p>
+       <p mat-line class="demo-2"> {{ purchases }} </p>
     </mat-list-item>
  </mat-list>

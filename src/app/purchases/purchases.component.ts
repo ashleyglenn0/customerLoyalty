@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Purchases } from '../purchases/purchases.model';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-purchases',
@@ -15,7 +16,7 @@ export class PurchasesComponent implements OnInit {
   customerId: any;
   customer: any;
   uid: any;
-  existingLoyaltyPoints: number = 0;
+  existingLoyaltyPoints: number = 100;
   
 
   constructor(private router: Router, private route: ActivatedRoute, private customerService: CustomerService, private auth: AuthService) { }
@@ -37,16 +38,14 @@ export class PurchasesComponent implements OnInit {
     if(purchaseAmount > 100 && purchaseAmount > 50){
       loyaltyPointsOver100 = (purchaseAmount - 100 ) * 2;
       loyaltyPointsOver50 = 50;
-      totalLoyaltyPoints = loyaltyPointsOver100 + loyaltyPointsOver50;
-      totalLoyaltyPoints += this.existingLoyaltyPoints;
+      totalLoyaltyPoints = loyaltyPointsOver100 + loyaltyPointsOver50 + this.existingLoyaltyPoints;
       return totalLoyaltyPoints;
     } else if (purchaseAmount > 50){
       loyaltyPointsOver50 = (purchaseAmount - 50) * 1;
-      totalLoyaltyPoints = loyaltyPointsOver50;
-      totalLoyaltyPoints += this.existingLoyaltyPoints;
+      totalLoyaltyPoints = loyaltyPointsOver50 + this.existingLoyaltyPoints;
       return totalLoyaltyPoints;
     } else{
-      totalLoyaltyPoints += this.existingLoyaltyPoints;
+      totalLoyaltyPoints = this.existingLoyaltyPoints;
       return totalLoyaltyPoints;
     }
 
@@ -60,11 +59,13 @@ export class PurchasesComponent implements OnInit {
     this.getLoyaltyPoints(amount);
     form.resetForm();
     console.log(form);
+    console.log(this.existingLoyaltyPoints);
   }
   
 
   onSubmit(): any{
     this.customerService.saveCustomer(this.customer, this.uid);
+    this.router.navigate(['/customerList']);
   }
 
 }
