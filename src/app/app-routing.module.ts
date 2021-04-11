@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'landingPage', component: LandingPageComponent },
   { path: 'singleCustomer', component: SingleCustomerComponent },
   { path: 'customerList', component: CustomerListComponent },
-  { path: 'addPurchases', component: PurchasesComponent },
+  { path: 'addPurchases/:id', component: PurchasesComponent },
   { path: 'storeLogin', component: LoginComponent },
   { path: 'addCustomer', component: AddCustomerComponent }
 ];

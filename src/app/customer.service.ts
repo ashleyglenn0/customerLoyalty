@@ -15,7 +15,7 @@ export class CustomerService{
     
   }
 
-  createCustomer(firstName: string, lastName: string, loyaltyPoints: number, purchases: Purchases[]): number{
+  createCustomer(firstName: string, lastName: string, loyaltyPoints: number, purchases: any = []): number{
     const customer: Customer = new Customer(firstName, lastName, loyaltyPoints, purchases);
     this.customers.push(customer);
     return customer.customerId;
@@ -35,6 +35,10 @@ export class CustomerService{
     this.purchases.push(purchases);
     return purchases;
 
+  }
+
+  saveCustomer(customer: Customer, uid: string){
+    return this.db.collection(`Stores/${uid}/customers`).add(customer.toJson());
   }
     
 }

@@ -1,20 +1,16 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Date</mat-label>
-      <input matInput placeholder="04/09/21" value="Date">
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-        <mat-label>Amount</mat-label>
-        <input matInput type="number" class="example-right-align">
-        <span matPrefix>$&nbsp;</span>
-        <span matSuffix>.00</span>
-      </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-        <mat-label>Description of purchase</mat-label>
-        <textarea matInput placeholder="Ex. CellPhone Accesory"></textarea>
-      </mat-form-field>
-  </form>
-
-  <button mat-raised-button>Submit</button>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="formGroupExampleInput">Date of Purchase</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Date of Purchase" ngModel name = "date" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Amount</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Amount of Purchase" ngModel name = "amount" required>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Description</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Description" ngModel name = "description" required>
+  </div>
+</form>
+  <span>Total Loyalty Points: {{existingLoyaltyPoints}} </span>
+  <button mat-raised-button type="button" (click)="onSubmit(f)">Submit</button>

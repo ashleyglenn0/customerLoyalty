@@ -14,4 +14,20 @@ export class Customer{
         this.loyaltyPoints = loyaltyPoints;
         this.purchases = purchases;
     }
+    toJson(){
+        let json = {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            loyaltyPoints: this.loyaltyPoints,
+            purchases: [] as any
+        }
+        this.purchases.forEach(purchase => {
+            json.purchases.push({
+                date: purchase.date,
+                amount: purchase.amount,
+                description: purchase.description
+            })
+        })
+        return json;
+    }
 }

@@ -20,30 +20,23 @@
                 <img mat-card-image src="../../assets/images/clay-banks-31l-8hY1mt4-unsplash.jpg"
                     alt="Photo of a point of sale system">
                 <mat-card-content>
-                    <form class="quick-sign-up">
-                        <mat-form-field class="storeNumber">
-                            <mat-label>Store Number</mat-label>
-                            <input matInput placeholder="Ex. Store#" value="3836">
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field class="storeEmail">
-                            <mat-label>Store Email</mat-label>
-                            <input matInput placeholder="Ex. StoreEmail" value="store3836@savethestores.com">
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field class="Password">
-                            <mat-label>Password</mat-label>
-                            <textarea matInput placeholder="See store manager if you're unsure"></textarea>
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field class="confirmPassword">
-                            <mat-label> Confirm Password</mat-label>
-                            <textarea matInput placeholder="Store Managers"></textarea>
-                        </mat-form-field>
-                    </form>
+                    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Store Email</label>
+                          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Store Email" ngModel name = "email" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Store Number</label>
+                          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Store Number" ngModel name = "storeNumber" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Password</label>
+                          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password" ngModel name = "password" required>
+                        </div>
+                      </form>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary">SUBMIT</button>
+                    <button mat-raised-button color="primary" type="button" (click)="onSubmit(f)">SUBMIT</button><button mat-raised-button color="accent" type="button" (click)="login()">Click Here to LogIn</button>
                 </mat-card-actions>
             </mat-card>
         </main>
