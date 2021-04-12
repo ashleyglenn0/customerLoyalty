@@ -34,6 +34,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import  'firebase/firestore';
 import { environment } from '../environments/environment';
+import { FilterPipe } from '../app/pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { environment } from '../environments/environment';
     HomeComponent,
     LandingPageComponent,
     LoginComponent,
+    FilterPipe,
+    SortPipe,
   ],
   imports: [
     BrowserModule,

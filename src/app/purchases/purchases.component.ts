@@ -4,7 +4,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Purchases } from '../purchases/purchases.model';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Customer } from '../customer.model';
+ 
 
 @Component({
   selector: 'app-purchases',
@@ -16,7 +17,7 @@ export class PurchasesComponent implements OnInit {
   customerId: any;
   customer: any;
   uid: any;
-  existingLoyaltyPoints: number = 100;
+  loyaltyPoints = 0;
   
 
   constructor(private router: Router, private route: ActivatedRoute, private customerService: CustomerService, private auth: AuthService) { }
@@ -35,17 +36,17 @@ export class PurchasesComponent implements OnInit {
     let loyaltyPointsOver100 = 0;
     let loyaltyPointsOver50 = 0;
     let totalLoyaltyPoints = 0;
-    if(purchaseAmount > 100 && purchaseAmount > 50){
+    if(purchaseAmount > 100){
       loyaltyPointsOver100 = (purchaseAmount - 100 ) * 2;
       loyaltyPointsOver50 = 50;
-      totalLoyaltyPoints = loyaltyPointsOver100 + loyaltyPointsOver50 + this.existingLoyaltyPoints;
+      totalLoyaltyPoints = loyaltyPointsOver100 + loyaltyPointsOver50 + this.customer.loyaltyPoints;
       return totalLoyaltyPoints;
-    } else if (purchaseAmount > 50){
+    } else if (purchaseAmount > 50 && purchaseAmount < 100){
       loyaltyPointsOver50 = (purchaseAmount - 50) * 1;
-      totalLoyaltyPoints = loyaltyPointsOver50 + this.existingLoyaltyPoints;
+      totalLoyaltyPoints = loyaltyPointsOver50 + this.customer.loyaltyPoints;
       return totalLoyaltyPoints;
     } else{
-      totalLoyaltyPoints = this.existingLoyaltyPoints;
+      totalLoyaltyPoints = this.customer.loyaltyPoints;
       return totalLoyaltyPoints;
     }
 
@@ -56,10 +57,10 @@ export class PurchasesComponent implements OnInit {
     const amount = form.form.value.amount;
     const description = form.form.value.description;
     this.customerService.createPurchases(date, amount, description, this.customer);
-    this.getLoyaltyPoints(amount);
+    this.getLoyaltyPoints(form.form.value.amount);
     form.resetForm();
     console.log(form);
-    console.log(this.existingLoyaltyPoints);
+    console.log(this.customer.loyaltyPoints);
   }
   
 

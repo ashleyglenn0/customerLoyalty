@@ -23,10 +23,8 @@ export class AddCustomerComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): any{
-     const firstName = form.form.value.firstName;
-     const lastName = form.form.value.lastName;
-     const loyaltyPoints = form.form.value.loyaltyPoints;
-     const customerId = this.customerService.createCustomer(firstName, lastName, loyaltyPoints);
+     const username = form.form.value.firstName;
+     const customerId = this.customerService.createCustomer(username);
      this.router.navigate(['/addPurchases', customerId])
      console.log(form);
   }

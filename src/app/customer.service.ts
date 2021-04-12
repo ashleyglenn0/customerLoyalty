@@ -26,8 +26,8 @@ export class CustomerService{
     
   }
 
-  createCustomer(firstName: string, lastName: string, loyaltyPoints: number, purchases: any = []): number{
-    const customer: Customer = new Customer(firstName, lastName, loyaltyPoints, purchases);
+  createCustomer(username: string): number{
+    const customer: Customer = new Customer(username, 0, this.purchases);
     this.customers.push(customer);
     return customer.customerId;
   }

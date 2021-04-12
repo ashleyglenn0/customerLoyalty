@@ -2,22 +2,19 @@ import { Purchases } from '../app/purchases/purchases.model';
 
 export class Customer{
     public customerId: any;
-    public firstName: string;
-    public lastName: string;
+    public username: string;
     public loyaltyPoints: number;
     public purchases: Purchases[];
 
-    constructor(firstName: string, lastName: string, loyaltyPoints: number, purchases: Purchases[]){
+    constructor(username: string, loyaltyPoints: number, purchases: Purchases[]){
         this.customerId = Date.now();
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.username = username;
         this.loyaltyPoints = loyaltyPoints;
         this.purchases = purchases;
     }
     toJson(){
         let json = {
-            firstName: this.firstName,
-            lastName: this.lastName,
+            username: this.username,
             loyaltyPoints: this.loyaltyPoints,
             purchases: [] as any
         }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer.model';
 import { CustomerService } from '../customer.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./customer-list.component.scss']
 })
 export class CustomerListComponent implements OnInit {
-  customer: string = '';
+  customer: any = ''
+  // customerId: any;
   purchases: string = '';
   private customersCollection!: AngularFirestoreCollection<Customer>;
   customers!: Observable<Customer[]>;
@@ -22,16 +23,25 @@ export class CustomerListComponent implements OnInit {
   constructor(private customerService: CustomerService, private router: Router, private auth: AuthService, private afs: AngularFirestore) { }
 
   ngOnInit(): void {
+
+    // this.customerId = this.route.snapshot.params.id;
+    // this.customer = this.customerService.getCustomerById(this.customerId);
+
     this.auth.getUserState().subscribe(user => {
       this.uid = user?.uid
 
-      this.customersCollection = this.afs.collection<Customer>(`Stores/${this.uid}/customers`);
-      this.customers = this.customersCollection.valueChanges({ idField: 'id' });
+       this.customersCollection = this.afs.collection<Customer>(`Stores/${this.uid}/customers`);
+       this.customers = this.customersCollection.valueChanges({ idField: 'id' });
     })
   }
 
+  addPurchase(customer: Customer): any{
+    this.router.navigate(['/addPurchases'])
+
+  }
+
   onViewCustomer(customer: Customer): any {
-    this.router.navigate(['/singleCustomer', customer.customerId]);
+    this.router.navigate(['/singleCustomer']);
   }
 
   deleteCustomer(customer: Customer): any {
