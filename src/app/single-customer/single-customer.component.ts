@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Customer } from '../customer.model';
 import { AuthService } from '../auth.service';
 import { Purchases } from '../purchases/purchases.model';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-single-customer',
@@ -12,24 +13,46 @@ import { Observable } from 'rxjs';
 })
 export class SingleCustomerComponent implements OnInit {
   panelOpenState = false;
-  customer: Customer| undefined;
+  customerId: any;
+  // customer: Customer| undefined;
   purchases: Purchases | undefined;
-  customers!: Observable<Customer[]>;
+  // customers!: Observable<Customer[]>;
   private customersCollection!: AngularFirestoreCollection<Customer>;
+  private customerDoc!: AngularFirestoreDocument<Customer>;
+  customer$: Observable<Customer| undefined> | undefined;
+  customerSubscriptionRef: Subscription | undefined;
   uid: any;
 
   
-  constructor(private auth: AuthService, private afs: AngularFirestore) { }
+  constructor(private auth: AuthService, private afs: AngularFirestore, private route: ActivatedRoute) { 
+    this.route.params.subscribe(params => {
+      this.customerId = params.id;
+      this.auth.getUserState().subscribe(user => {
+        this.uid = user?.uid
+        this.customerDoc = this.afs.doc<Customer>(`Stores/${this.uid}/customers/${this.customerId}`);
+        this.customer$ = this.customerDoc.valueChanges();
+      });
+    });
+  }
 
   ngOnInit(): void {
-    this.auth.getUserState().subscribe(user => {
-      this.uid = user?.uid
-
-       this.customersCollection = this.afs.collection<Customer>(`Stores/${this.uid}/customers`);
-       this.customers = this.customersCollection.valueChanges({ idField: 'id' });
-
+    // this.auth.getUserState().subscribe(user => {
+    //   this.uid = user?.uid
+    //   this.customerDoc = this.afs.doc<Customer[]>(`Stores/${this.uid}/customers/${this.customerId}`);
+    //   this.customer$ = this.customerDoc.valueChanges();
+      // this.customerSubscriptionRef = this.customer$.subscribe(customer => {
+      //   this.customer = customer;
+      // })
+      //  this.customersCollection = this.afs.collection<Customer>(`Stores/${this.uid}/customers`);
+      //  this.customers = this.customersCollection.valueChanges({ idField: 'id' });
         
-    })
+  }
+  
+
+  ngOnDestroy(): void {
+    
+  // this.customerSubscriptionRef?.unsubscribe()  
+
   }
 
 }

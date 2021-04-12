@@ -13,7 +13,7 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'landingPage', component: LandingPageComponent },
-  { path: 'singleCustomer', component: SingleCustomerComponent },
+  { path: 'singleCustomer/:id', component: SingleCustomerComponent },
   { path: 'customerList', component: CustomerListComponent },
   { path: 'addPurchases/:id', component: PurchasesComponent },
   { path: 'storeLogin', component: LoginComponent },
