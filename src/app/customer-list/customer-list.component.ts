@@ -36,8 +36,8 @@ export class CustomerListComponent implements OnInit {
     })
   }
 
-  addPurchase(customer: Customer): any{
-    this.router.navigate(['/addPurchases'])
+  addPurchase(customer: any): any{
+    this.router.navigate(['/addPurchases', customer.id]);
 
   }
 
@@ -45,9 +45,9 @@ export class CustomerListComponent implements OnInit {
     this.router.navigate(['/singleCustomer', customer.id]);
   }
 
-  deleteCustomer(customer: Customer): any {
+  deleteCustomer(customer: any): any {
     confirm('Refund and delete this customer?');
-    this.afs.collection(`Stores/${this.uid}/customers`).doc(customer.customerId).delete();
+    this.afs.collection(`Stores/${this.uid}/customers`).doc(customer.id).delete();
   }
 
 }

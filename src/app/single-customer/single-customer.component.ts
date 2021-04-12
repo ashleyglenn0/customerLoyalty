@@ -22,6 +22,7 @@ export class SingleCustomerComponent implements OnInit {
   customer$: Observable<Customer| undefined> | undefined;
   customerSubscriptionRef: Subscription | undefined;
   uid: any;
+  Today = new Date()
 
   
   constructor(private auth: AuthService, private afs: AngularFirestore, private route: ActivatedRoute) { 
@@ -36,17 +37,16 @@ export class SingleCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.auth.getUserState().subscribe(user => {
-    //   this.uid = user?.uid
-    //   this.customerDoc = this.afs.doc<Customer[]>(`Stores/${this.uid}/customers/${this.customerId}`);
-    //   this.customer$ = this.customerDoc.valueChanges();
-      // this.customerSubscriptionRef = this.customer$.subscribe(customer => {
-      //   this.customer = customer;
-      // })
-      //  this.customersCollection = this.afs.collection<Customer>(`Stores/${this.uid}/customers`);
-      //  this.customers = this.customersCollection.valueChanges({ idField: 'id' });
+   
         
   }
+
+  // getTotalLoyaltyPoints(customer: any): any{
+  //   for(let i = 0; i < this.customerId.purchases.loyaltyPoints.length; i++){
+
+  //   }
+
+  // }
   
 
   ngOnDestroy(): void {

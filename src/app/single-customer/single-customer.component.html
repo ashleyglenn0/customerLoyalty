@@ -1,9 +1,11 @@
 
+Current Date : {{Today | date: 'medium'}}
+
 <mat-accordion  *ngIf="(customer$ | async) as customer ">
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Customer Information {{customer | json}}
+          Customer Information
         </mat-panel-title>
         <mat-panel-description>
           Customer Name: {{customer?.username}}
@@ -24,10 +26,12 @@
       <p>Loyalty Points Total: {{customer?.loyaltyPoints}}</p>
       <ul>
         <li *ngFor="let purchase of customer?.purchases">
-          {{purchase.description}} - {{purchase.loyaltyPoints}}
+          {{purchase.description}} - {{purchase.loyaltyPoints}} - {{purchase.amount}}
         </li>
       </ul>
+      <div *ngFor="let purchase of customer?.purchases">
       <p>Loyalty Points For Current Month:  </p>
+    </div>
       <a routerLink="/customerList"><button mat-raised-button>Return to Customer List</button></a>
     </mat-expansion-panel>
   </mat-accordion>
