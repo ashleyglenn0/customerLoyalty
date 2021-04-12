@@ -22,7 +22,7 @@ export class SingleCustomerComponent implements OnInit {
   customer$: Observable<Customer| undefined> | undefined;
   customerSubscriptionRef: Subscription | undefined;
   uid: any;
-  Today = new Date()
+  
 
   
   constructor(private auth: AuthService, private afs: AngularFirestore, private route: ActivatedRoute) { 
@@ -41,12 +41,7 @@ export class SingleCustomerComponent implements OnInit {
         
   }
 
-  // getTotalLoyaltyPoints(customer: any): any{
-  //   for(let i = 0; i < this.customerId.purchases.loyaltyPoints.length; i++){
-
-  //   }
-
-  // }
+  
   
 
   ngOnDestroy(): void {
