@@ -23,10 +23,10 @@ export class AddCustomerComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): any{
-     const username = form.form.value.firstName;
-     const customerId = this.customerService.createCustomer(username);
-     this.router.navigate(['/addPurchases', customerId])
-     console.log(form);
+    const username = form.form.value.username;
+    const customerId = this.customerService.createCustomer(username); 
+    this.router.navigate(['/addPurchases', customerId])
+    console.log(form);
   }
 
 }

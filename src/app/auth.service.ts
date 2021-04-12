@@ -34,6 +34,19 @@ export class AuthService {
             }
         })
     }
+
+    customerlogin(email: string, password: string) {
+        this.afAuth.signInWithEmailAndPassword(email, password)
+        .catch(error => {
+            this.eventAuthError.next(error);
+        })
+        .then(userCredential => {
+            if(userCredential) {
+                this.router.navigate(['/landingPage']);
+            }
+        })
+    }
+    
     createStore(email: string, password: string, storeNumber: string) {
         this.afAuth.createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
@@ -47,6 +60,28 @@ export class AuthService {
             }
 
             this.db.doc(`Stores/${uid}`).set(userData)
+                .then(() => {
+                    this.router.navigate(['/landingPage'])
+                });
+        })
+        .catch(error => {
+            this.eventAuthError.next(error);
+        })
+    }
+
+    createCustomer(email: string, password: string, username: string) {
+        this.afAuth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+            userCredential.user?.updateProfile({
+                displayName: username
+            });
+            const uid = userCredential.user?.uid;
+            const userData = {
+                email,
+                username
+            }
+
+            this.db.doc(`Customers/${uid}`).set(userData)
                 .then(() => {
                     this.router.navigate(['/landingPage'])
                 });

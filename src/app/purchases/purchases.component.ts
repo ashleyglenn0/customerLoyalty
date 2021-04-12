@@ -32,32 +32,32 @@ export class PurchasesComponent implements OnInit {
     })
   }
 
-  getLoyaltyPoints(purchaseAmount: number):number{
-    let loyaltyPointsOver100 = 0;
-    let loyaltyPointsOver50 = 0;
-    let totalLoyaltyPoints = 0;
-    if(purchaseAmount > 100){
-      loyaltyPointsOver100 = (purchaseAmount - 100 ) * 2;
-      loyaltyPointsOver50 = 50;
-      totalLoyaltyPoints = loyaltyPointsOver100 + loyaltyPointsOver50 + this.customer.loyaltyPoints;
-      return totalLoyaltyPoints;
-    } else if (purchaseAmount > 50 && purchaseAmount < 100){
-      loyaltyPointsOver50 = (purchaseAmount - 50) * 1;
-      totalLoyaltyPoints = loyaltyPointsOver50 + this.customer.loyaltyPoints;
-      return totalLoyaltyPoints;
-    } else{
-      totalLoyaltyPoints = this.customer.loyaltyPoints;
-      return totalLoyaltyPoints;
-    }
+  // getLoyaltyPoints(purchaseAmount: number):number{
+  //   let loyaltyPointsOver100 = 0;
+  //   let loyaltyPointsOver50 = 0;
+  //   let totalLoyaltyPoints = 0;
+  //   if(purchaseAmount > 100){
+  //     loyaltyPointsOver100 = (purchaseAmount - 100 ) * 2;
+  //     loyaltyPointsOver50 = 50;
+  //     totalLoyaltyPoints = loyaltyPointsOver100 + loyaltyPointsOver50 + this.customer.loyaltyPoints;
+  //     return totalLoyaltyPoints;
+  //   } else if (purchaseAmount > 50 && purchaseAmount < 100){
+  //     loyaltyPointsOver50 = (purchaseAmount - 50) * 1;
+  //     totalLoyaltyPoints = loyaltyPointsOver50 + this.customer.loyaltyPoints;
+  //     return totalLoyaltyPoints;
+  //   } else{
+  //     totalLoyaltyPoints = this.customer.loyaltyPoints;
+  //     return totalLoyaltyPoints;
+  //   }
 
-  }
+  // }
 
   addPurchase(form: NgForm): any {
     const date = form.form.value.date;
     const amount = form.form.value.amount;
     const description = form.form.value.description;
     this.customerService.createPurchases(date, amount, description, this.customer);
-    this.getLoyaltyPoints(form.form.value.amount);
+    // this.customerService.getLoyaltyPoints(amount);
     form.resetForm();
     console.log(form);
     console.log(this.customer.loyaltyPoints);

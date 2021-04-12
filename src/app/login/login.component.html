@@ -1,25 +1,30 @@
-<mat-card class="sign-up-card">
-    <mat-card-header>
+<div class="hero">
+  <div class="container">
+    <mat-card class="sign-up-card">
+      <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>Log In</mat-card-title>
         <mat-card-subtitle>Hey welcome back!!</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="../../assets/images/clay-banks-31l-8hY1mt4-unsplash.jpg"
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/clay-banks-31l-8hY1mt4-unsplash.jpg"
         alt="Photo of a point of sale system">
-    <mat-card-content>
+      <mat-card-content>
         <form (ngSubmit)="login(f)" #f="ngForm">
-            <div class="form-group">
-              <label for="formGroupExampleInput">Store Email</label>
-              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Store Email" ngModel name = "email" required>
-            </div>
-            <div class="form-group">
-              <label for="formGroupExampleInput2">Password</label>
-              <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password" ngModel name = "password" required>
-            </div>
-          </form>
-    </mat-card-content>
-    <mat-card-actions>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Store Email</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Store Email" ngModel
+              name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password" ngModel
+              name="password" required>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
         <button mat-raised-button color="primary" type="button" (click)="login(f)">SUBMIT</button>
-    </mat-card-actions>
-</mat-card>
-
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

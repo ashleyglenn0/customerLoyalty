@@ -4,11 +4,14 @@
   max-width: 500px;
 }
 
-  .sign-up-card {
+.sign-up-card {
     max-width: 350px;
   }
   
-  .example-header-image {
+.example-header-image {
     background-image: url('../../assets/images/user.svg');
     background-size: cover;
   }
+.container{
+  margin: 10px 400px;
+}
