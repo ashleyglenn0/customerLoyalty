@@ -46,7 +46,7 @@ export class CustomerService{
       loyaltyPointsOver50 = 50;
       totalLoyaltyPointsEarned = loyaltyPointsOver100 + loyaltyPointsOver50;
       return totalLoyaltyPointsEarned;
-    } else if (purchaseAmount > 50 && purchaseAmount < 100){
+    } else if (purchaseAmount > 50){
       loyaltyPointsOver50 = (purchaseAmount - 50) * 1;
       totalLoyaltyPointsEarned = loyaltyPointsOver50;
       return totalLoyaltyPointsEarned;

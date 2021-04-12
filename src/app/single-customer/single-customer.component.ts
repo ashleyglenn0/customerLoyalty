@@ -12,12 +12,10 @@ import { Observable } from 'rxjs';
 })
 export class SingleCustomerComponent implements OnInit {
   panelOpenState = false;
-  purchase: Purchases | undefined;
   customer: Customer| undefined;
   purchases: Purchases | undefined;
   customers!: Observable<Customer[]>;
   private customersCollection!: AngularFirestoreCollection<Customer>;
-  private purchasesCollection!: AngularFirestoreCollection<Customer>
   uid: any;
 
   
