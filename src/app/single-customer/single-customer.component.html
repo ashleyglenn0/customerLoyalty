@@ -1,11 +1,11 @@
-<mat-accordion>
+<mat-accordion *ngFor="let customer of customers | async">
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Customer Information
         </mat-panel-title>
-        <mat-panel-description>
-          Customer Name: 
+        <mat-panel-description  >
+          Customer Name: {{customer?.username}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <p>Member since 2021</p>
@@ -20,8 +20,8 @@
          {{panelOpenState ? 'open' : 'closed'}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>Loyalty Points Total: </p>
-      <p>Loyalty Points For Current Month: </p>
+      <p>Loyalty Points Total: {{customer?.purchases}}</p>
+      <p>Loyalty Points For Current Month:  </p>
       <button mat-raised-button>Return to Customer List</button>
     </mat-expansion-panel>
   </mat-accordion>

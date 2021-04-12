@@ -56,11 +56,12 @@ export class PurchasesComponent implements OnInit {
     const date = form.form.value.date;
     const amount = form.form.value.amount;
     const description = form.form.value.description;
-    this.customerService.createPurchases(date, amount, description, this.customer);
+    const loyaltyPoints = this.customerService.getLoyaltyPoints(amount);
+    this.customerService.createPurchases(date, amount, description, loyaltyPoints, this.customer);
     // this.customerService.getLoyaltyPoints(amount);
     form.resetForm();
     console.log(form);
-    console.log(this.customer.loyaltyPoints);
+    console.log(this.customer.purchases.loyaltyPoints);
   }
   
 

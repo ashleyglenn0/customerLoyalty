@@ -9,7 +9,7 @@
     </mat-list-item>
     <mat-divider></mat-divider>
     <h3 mat-subheader>Purchases</h3>
-    <mat-list-item *ngFor="let purchases of purchases">
+    <mat-list-item *ngFor="let purchases of purchases | async">
        <mat-icon mat-list-icon>Loyalty Points</mat-icon>
        <h4 mat-line></h4>
        <p mat-line class="demo-2"> {{ purchases }} </p>
